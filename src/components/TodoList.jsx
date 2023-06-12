@@ -22,17 +22,25 @@ export const TodoList = ({ tasks, updateTask, deleteTask, toggleTask }) => {
         setFilter('completed');
     }
 
+    const getFilteredTasks = () => {
+        return tasks.filter(task => {
+            return (
+                 (filter === 'active' && !task.delete)
+                    || (filter === 'deleted' && task.delete)
+                    || (filter === 'completed' && task.done)
+                    || (filter === 'all')
+            )
+        })
+    }
+
     return (
          <Paper
             square={true}
             sx={{ marginTop: 2 }}
          >
             <List>
-                {tasks.map((task) => {
-                    if ((filter === 'active' && !task.delete)
-                        || (filter === 'deleted' && task.delete)
-                        || (filter === 'completed' && task.done)
-                        || (filter === 'all')) {
+                {
+                getFilteredTasks().map((task) => {                  
                     return (
                     <TodoListItem
                         key={task.id}
@@ -43,8 +51,7 @@ export const TodoList = ({ tasks, updateTask, deleteTask, toggleTask }) => {
                         toggleTask={toggleTask}
                         deleteTask={deleteTask} 
                         />
-                    )
-                 }
+                    )               
                 })
                 }
             </List>
