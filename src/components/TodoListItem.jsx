@@ -8,11 +8,11 @@ export const TodoListItem = ({ id, done, description, toggleTask, updateTask, de
     const [newDescription, setNewDescription] = useState(description);
 
     const handleOnClick = () => {
-        setEditing(true)
+        setEditing(true);
     }
 
     const handleOnChange = (event) => {
-        setNewDescription(event.target.value)
+        setNewDescription(event.target.value);
     }
     
     const handleOnBlur = (event) => {
@@ -30,7 +30,7 @@ export const TodoListItem = ({ id, done, description, toggleTask, updateTask, de
 
     const handleOnCancelClick = () => {
         // confirm for deletion
-        let confirmed = window.confirm('Are you sure?')
+        let confirmed = window.confirm('Are you sure?');
         if (confirmed) {
             // update the parent state (delete this task)
             deleteTask(id);
@@ -63,8 +63,7 @@ export const TodoListItem = ({ id, done, description, toggleTask, updateTask, de
                         {description}
                     </ListItemText>
                  )
-               }
-                
+               }                
                 <IconButton onClick={handleOnCancelClick}>
                     <CancelIcon />
                 </IconButton>
