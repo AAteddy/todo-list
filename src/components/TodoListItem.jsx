@@ -21,7 +21,7 @@ export const TodoListItem = ({ id, done, description, toggleTask, updateTask, de
     }
 
     const handleKeyDown = (event) => {
-        if (event.keyCode == 13) {
+        if (event.keyCode === 13) {
             setEditing(false);
             // update the parent state (with new description)
             updateTask(id, newDescription);
